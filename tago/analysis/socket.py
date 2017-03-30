@@ -2,6 +2,7 @@ from socketIO_client import SocketIO, LoggingNamespace
 import logging
 logging.getLogger('socketIO-client').setLevel(logging.DEBUG)
 logging.basicConfig()
+import json
 
 # options = {'reconnectionDelay': 10000, 'reconnection': true}
 
@@ -21,7 +22,8 @@ class TagoRealTime:
 
     def on_response(*arg):
         print 'arg response:'
-        print arg
+        print json.dump(arg)
+        print arg['result']
 
     def listening(self, wait):
         self.socket.emit('register:analysis', self.token)
