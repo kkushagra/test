@@ -22,8 +22,8 @@ class TagoRealTime:
 
     def on_response(*arg):
         print 'arg response:'
-        print json.dump(arg)
-        print arg['result']
+        # print json.dump(arg)
+        print arg
 
     def listening(self, wait):
         self.socket.emit('register:analysis', self.token)
