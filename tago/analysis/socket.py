@@ -13,7 +13,7 @@ class TagoRealTime:
         self.token    = token
         self.callback = callback
 
-    def run(environment, data, token):
+    def run(self, environment, data, token):
         if data.empty():
             data = []
 
