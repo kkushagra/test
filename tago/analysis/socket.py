@@ -13,20 +13,25 @@ class TagoRealTime:
         self.token    = token
         self.callback = callback
 
-    def run(environment, data , token):
+    def run(environment, data, token):
         if data.empty():
             data = []
 
         context = {token, environment}
-        self.analysis(context, data)
+        self.callback(context, data)
 
     def on_connect(self, arg):
         print arg['result']
 
+    def on_scope(self, arg):
+        for x in arg:
+            self.run(x['environment'], x['data'], self.token)
+
     def listening(self, wait):
         self.socket.emit('register:analysis', self.token)
         self.socket.on('register:analysis', self.on_connect)
-        self.socket.on('run:analysis', self.on_connect)
+
+        self.socket.on('run:analysis', self.on_scope)
         
         if wait:
             self.socket.wait(seconds=wait)
