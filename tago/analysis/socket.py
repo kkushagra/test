@@ -20,7 +20,7 @@ class TagoRealTime:
         context = {token, environment}
         self.analysis(context, data)
 
-    def on_response(arg):
+    def on_response(*arg):
         print 'arg response:'
         # print json.dump(arg)
         print arg
