@@ -12,7 +12,6 @@ class TagoRealTime:
         self.token    = token
         self.callback = callback
 
-
     def run(environment, data , token):
         if data.empty():
             data = []
@@ -21,7 +20,7 @@ class TagoRealTime:
         self.analysis(context, data)
 
     def on_response(*arg):
-        print arg
+        print arg.result
 
     def listening(self, wait):
         self.socket.emit('register:analysis', self.token)
