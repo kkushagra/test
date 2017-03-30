@@ -18,7 +18,7 @@ class TagoRealTime:
             data = []
 
         print environment
-        context = {token, "environment":environment}
+        context = {token, {"environment":environment}}
         self.callback(context, data)
 
     def on_connect(self, arg):
