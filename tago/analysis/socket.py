@@ -17,6 +17,7 @@ class TagoRealTime:
         if len(data) == 0:
             data = []
 
+        print environment
         context = {token, environment}
         self.callback(context, data)
 
