@@ -20,15 +20,13 @@ class TagoRealTime:
         context = {token, environment}
         self.analysis(context, data)
 
-    def on_response(self, arg):
-        print 'arg response:'
-        # print json.dump(arg, )
+    def on_connect(self, arg):
         print arg['result']
 
     def listening(self, wait):
         self.socket.emit('register:analysis', self.token)
-        self.socket.on('register:analysis', self.on_response)
-        self.socket.on('run:analysis', self.on_response)
+        self.socket.on('register:analysis', self.on_connect)
+        self.socket.on('run:analysis', self.on_connect)
         
         if wait:
             self.socket.wait(seconds=wait)
